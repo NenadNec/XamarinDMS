@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:NecDMS.Helper;assembly=NecDMS"
+             x:Class="NecDMS.View.PretregaDokumenataDetail"
+             BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+	<NavigationPage.TitleView>
+		<Label x:Name="title" FontSize="14" TextColor="White" />
+	</NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ConverterBase64ImageSource x:Key="Base64ToImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+  
+        	<Grid VerticalOptions="CenterAndExpand" Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                   	<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+                </Grid.RowDefinitions> 
+
+                <CarouselView Grid.Row="0" 
+                              ItemsSource="{Binding .}" 
+                              MinimumHeightRequest="80" 
+                              CurrentItemChanged="OnCurrentItemChanged"
+                              HorizontalOptions="Center"
+                              IsSwipeEnabled="True"
+                              >
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout  >
+
+								
+                            <Image Source="{Binding Thumb64, Converter={StaticResource Base64ToImageConverter}}" />
+                            
+                        </StackLayout>
+                  
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+                
+            </CarouselView>
+
+            <WebView  x:Name="webview" 
+                      Grid.Row="0" 
+                      Margin="{OnPlatform Android='0,70,0,0', iOS='0,70,0,0', UWP='0,160,0,0'}" 
+                      
+                      />
+        </Grid>
+   
+
+
+</ContentPage>

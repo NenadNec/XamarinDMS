@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NecDMS.App">
+	<Application.Resources>
+		<Color x:Key="BojaDugme">#1b4b76</Color>
+        <Color x:Key="BojaDatum">#1b4b76</Color>
+        <Color x:Key="BojaPozadina">#1b4b76</Color>
+	<Color x:Key="BojaText">#1b4b76</Color>
+        <Color x:Key="BojaPlaceholder">Gray</Color>
+        <Color x:Key="BojaTextUnosPolje">#000000</Color>
+        <Color x:Key="BojaTextUnosLight">#000000</Color>
+        <Color x:Key="BojaTextLoginDark">#0C1713</Color>
+        <Color x:Key="BojaTextLogin">#616A6B</Color>
+
+
+
+        
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor"
+                    Value="#1b4b76"/>
+            <Setter Property="CornerRadius"
+                    Value="{OnPlatform Android='10', iOS='20', UWP='10' }" />
+            <Setter Property="HeightRequest"
+                    Value="70"/>
+            <Setter Property="FontSize"
+                    Value="Medium" />
+            <Setter Property="TextColor" 
+                    Value="White"/>
+            <Setter Property="Margin"
+                    Value="5,0,5,5"/>
+
+        </Style>
+
+        
+        <Style TargetType="Grid">
+            <Setter Property="Padding" 
+                    Value="10,0,10,0"/>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize"
+                    Value="20"/>
+
+        </Style>
+
+
+    </Application.Resources>
+</Application>
+<!--<?xml version="1.0" encoding="utf-8" ?>
+       
+        <Color x:Key="AppPrimaryColor">black</Color>
+        <Color x:Key="AppBackgroundColor"></Color>
+        <Color x:Key="PrimaryColor">Black</Color>
+        <Color x:Key="SecondaryColor">White</Color>
+        <Color x:Key="TertiaryColor">#4876FF</Color>
+        <Color x:Key="poadina">whitesmoke</Color>
+       
+        
+      
+     
+        <Style TargetType="DatePicker">
+            <Setter Property="TextColor" 
+                    Value="#464746"/>
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
+        
+
+
+
+    </Application.Resources>
+</Application> -->
+

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             mc:Ignorable="d"
+             x:Class="NecDMS.View.Inbox"
+               BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+    <NavigationPage.TitleView>
+        <Label x:Name="title" FontSize="14" TextColor="White" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        
+        <StackLayout>
+
+            <CollectionView x:Name="collection"  SelectionChanged="ListaPoruka_SelectionChanged" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" RowSpacing="0" ColumnSpacing="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" Margin="20,0,0,0" CornerRadius="20" BackgroundColor="{OnPlatform UWP='white'}">
+								<StackLayout Margin="0,0,0,10">
+                                    <Frame BackgroundColor="#1b4b76">
+                                        <StackLayout>
+											<Image  Source="{Binding imgSrc}" Margin="200,0,0,0" HeightRequest="40" x:Name="ImgClose"/>
+										</StackLayout>
+                                    </Frame>
+                                    <Label Margin="30,0,0,0" Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Naslov:  " FontAttributes="Italic" TextColor="#9c9282"/>
+                                                <Span Text="{Binding Naslov}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Margin="30,0,0,0" Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Posiljaoc:  " FontAttributes="Italic" TextColor="#9c9282"/>
+                                                <Span Text="{Binding Posiljaoc}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Margin="30,0,0,0" Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Primaoci:  " FontAttributes="Italic" TextColor="#9c9282"/>
+                                                <Span Text="{Binding Primaoci}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Margin="30,0,0,0" Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Tekst:  " FontAttributes="Italic" TextColor="#9c9282"/>
+												<Span Text="{Binding shortText}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Margin="30,0,0,0" Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Datum:  " FontAttributes="Italic" TextColor="#9c9282"/>
+                                                <Span Text="{Binding Datum}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </Frame>
+
+                            </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NecDMS.View.GlavniMeni"
+             NavigationPage.HasBackButton="{OnPlatform iOS='False', Android='false', UWP='False'}"
+             BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="toolbar_item_bell" Order="Primary" Icon="bell.png" Priority="0" Clicked="BellToolbarItem_Clicked"  />
+		<ToolbarItem x:Name="toolbar_item_settings" Text="Odjava" Priority="0" Clicked="Odjava_Clicked"  />
+	</ContentPage.ToolbarItems>
+
+	<NavigationPage.TitleView >
+        <ContentView BackgroundColor="Transparent" HorizontalOptions="End" x:Name="title_view">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"  />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Source="{OnPlatform iOS='bell.png', Android='bell.png', UWP='Assets/bell.png' }" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"   HeightRequest="25" WidthRequest="25" Clicked="BellImage_Clicked"/>
+                <Frame Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Margin="0,-25,10,0"   CornerRadius="{OnPlatform iOS='10', Android='20', UWP='20'}"
+                    Padding="-2"
+                    BackgroundColor="Red"
+                    HasShadow="False">
+                    <Label  FontSize="10" HeightRequest="22" WidthRequest="23" Margin="1,1,1,1"    HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"  BackgroundColor="Transparent" Text="{Binding messageCount}"
+                         TextColor="White"  x:Name="labelText"/>
+                </Frame>
+            </Grid>
+        </ContentView>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Image Source="{OnPlatform iOS='logo.png', Android='logo.png', UWP='Assets/logo.png' }" HorizontalOptions="CenterAndExpand" Margin="30,100,30,20"/>
+        
+            
+            <StackLayout >
+                <Grid Margin="10,10,10,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                      
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Frame Margin="0,5,0,0" CornerRadius="10" Grid.Row="0" Grid.Column="0" BorderColor="DarkGray"  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Explorer_Clicked" />
+                        </Frame.GestureRecognizers>
+
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="{OnPlatform iOS='explorer_color.png', Android='explorer_color.png', UWP='Assets/explorer_color.png' }" WidthRequest="55"/>
+							<Label Text="Explorer" 
+                                   TextColor="#9c9282" 
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+
+					<Frame Margin="0,5,0,0" CornerRadius="10"  Grid.Row="1" Grid.Column="0" BorderColor="DarkGray"  HasShadow="True">
+						<Frame.GestureRecognizers>
+							<TapGestureRecognizer Tapped="PoSadrzaju_Clicked" />
+						</Frame.GestureRecognizers>
+
+						<StackLayout VerticalOptions="Center">
+                            <Image Source="{OnPlatform iOS='content_search_color.png', Android='content_search_color.png', UWP='Assets/content_search_color.png'}" WidthRequest="55"/>
+							<Label Text="Pretraga sadržaj" 
+                                   TextColor="#9c9282" 
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="Medium"/>
+						</StackLayout>
+					</Frame>
+
+
+
+					<Frame Margin="0,5,0,0" CornerRadius="10"  Grid.Row="0" Grid.Column="1" BorderColor="DarkGray"  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Osnovna_Clicked" />
+                        </Frame.GestureRecognizers>
+
+						<StackLayout VerticalOptions="Center">
+                            <Image Source="{OnPlatform iOS='base_search_color.png', Android='base_search_color.png', UWP='Assets/base_search_color.png'}" WidthRequest="55"/>
+							<Label Text="Pretraga osnovna" 
+                                   TextColor="#9c9282" 
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="Medium"/>
+						</StackLayout>
+                    </Frame>
+
+
+
+                    <Frame Margin="0,5,0,0" CornerRadius="10"  Grid.Row="1" Grid.Column="1" BorderColor="DarkGray" HasShadow="True" >
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DatumIsteka_Clicked" />
+                        </Frame.GestureRecognizers>
+
+						<StackLayout VerticalOptions="Center">
+                            <Image Source="{OnPlatform iOS='date_search_color.png', Android='date_search_color.png', UWP='Assets/date_search_color.png'}" WidthRequest="55"/>
+                            <Label Text="Pretraga datum isteka" 
+                                   TextColor="#9c9282" 
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0,5,0,0" CornerRadius="10" Grid.Row="2" Grid.Column="0" BorderColor="DarkGray"  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OCR_Tapped" />
+                        </Frame.GestureRecognizers>
+
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="{OnPlatform iOS='ocr_search_color.png', Android='ocr_search_color.png', UWP='Assets/ocr_search_color.png' }" WidthRequest="55"/>
+                            <Label Text="OCR pretraga" 
+                                   TextColor="#9c9282" 
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

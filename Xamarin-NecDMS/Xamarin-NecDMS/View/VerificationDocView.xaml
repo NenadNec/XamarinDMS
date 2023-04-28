@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NecDMS.View.VerificationDocView"  BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="3*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<!--ROW_0-->
+		<StackLayout  Grid.Row="0"  Grid.ColumnSpan="2" Margin="0,10,0,0">
+			<Frame BackgroundColor="#EBEFEF" CornerRadius="10">
+				<Grid>
+					<Label HorizontalOptions="Center">
+						<Label.FormattedText>
+							<FormattedString>
+								<Span x:Name="title" FontAttributes="Bold" TextColor="#1b4b76" FontSize="20" Text="OVERA"/>
+							</FormattedString>
+						</Label.FormattedText>
+					</Label>
+				</Grid>
+			</Frame>
+		</StackLayout>
+
+		<!--ROW_2-->
+
+		<Frame Grid.Row="1"  Grid.ColumnSpan="2" Margin="0,0,0,0" CornerRadius="10" BackgroundColor="#EBEFEF">
+			
+			<Editor x:Name="napomena"   Placeholder="Napomena..."  PlaceholderColor="#9c9282" FontAttributes="Italic" TextColor="#9c9282" HeightRequest="200" />
+		
+		</Frame>
+
+
+		<!--ROW_3-->
+		<StackLayout  Grid.Row="2"  Grid.ColumnSpan="2" Margin="0,30,0,0">
+			
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="4*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+				<Label Grid.Row="0" Grid.Column="0"  Text="Vrati na obradu:"  TextColor="Gray"  VerticalOptions="CenterAndExpand" FontSize="Subtitle" />
+				<CheckBox Grid.Row="0" Grid.Column="1" CheckedChanged="obradaCheckBox_CheckedChanged"  x:Name="obradaCheckBox" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  IsChecked="False" Color="{StaticResource BojaText}" ScaleX="1.5" ScaleY="1.5"/>
+
+				<Label Grid.Row="1" Grid.Column="0"  Text="Overi:"  TextColor="Gray"  VerticalOptions="CenterAndExpand" FontSize="Subtitle"/>
+				<CheckBox Grid.Row="1" Grid.Column="1" CheckedChanged="overiCheckBox_CheckedChanged"  x:Name="overiCheckBox" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  IsChecked="False" Color="{StaticResource BojaText}" ScaleX="1.5" ScaleY="1.5"/>
+			</Grid>
+		</StackLayout>
+
+
+		<!--ROW_4-->
+		<Button Grid.Row="3" Grid.Column="0"  WidthRequest="150"  Clicked="Potvrdi_Clicked" BackgroundColor="#A6B1F7" Text="Potvrdi" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="0,0,0,0"/>
+
+		<Button Grid.Row="3" Grid.Column="1"  WidthRequest="150"  Clicked="Odustani_Clicked" BackgroundColor="#FFB8BC" Text="Odustani" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="0,0,0,0"/>
+
+	</Grid>
+</ContentPage>

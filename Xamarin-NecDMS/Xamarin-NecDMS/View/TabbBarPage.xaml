@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="NecDMS.View.TabbBarPage" xmlns:local="clr-namespace:NecDMS.View" 
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            BackgroundImageSource="drawable/Pozadina.png"
+			SelectedTabColor="#ffffff"
+             NavigationPage.HasBackButton="{OnPlatform iOS='True', Android='True', UWP='True'}"
+			UnselectedTabColor="#b8b8b8">
+    
+	<TabbedPage.ToolbarItems>
+		<ToolbarItem x:Name="toolbar_item_bell" Order="Primary" Icon="bell.png" Priority="0" Clicked="BellToolbarItem_Clicked" />
+		<ToolbarItem x:Name="toolbar_item_settings" Text="Odjava" Priority="0" Clicked="Odjava_Clicked" />
+   </TabbedPage.ToolbarItems>
+
+    <NavigationPage.TitleView>
+		<ContentView BackgroundColor="Transparent" x:Name="title_view">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"  />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+				<ImageButton Source="{OnPlatform iOS='bell.png', Android='bell.png', UWP='Assets/bell.png' }" Grid.Row="0" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"   HeightRequest="25" WidthRequest="25" Clicked="BellImage_Clicked"/>
+                <Frame Grid.Row="0" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Margin="0,-25,10,0"   CornerRadius="20"
+                    Padding="-2"
+                    BackgroundColor="Red"
+                    HasShadow="False">
+                    <Label  FontSize="10" HeightRequest="22" WidthRequest="23" Margin="1,1,1,1"    HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"  BackgroundColor="Transparent" Text="{Binding messageCount}"
+                         TextColor="White"  x:Name="labelText"/>
+                </Frame>
+            </Grid>
+        </ContentView>
+    </NavigationPage.TitleView>
+
+    <local:Explorer Title="Explorer"  IconImageSource="{OnPlatform iOS='explorer.png', Android='explorer.png', UWP='Assets/explorer_color.png' }"/>
+    <local:PretragaOsnovna Title="Osnovna"  IconImageSource="{OnPlatform iOS='base_search.png', Android='base_search.png', UWP='Assets/base_search_color.png' }"/>
+    <local:PretragaPoSadrzaju Title="Po sadržaju" IconImageSource="{OnPlatform iOS='content_search.png', Android='content_search.png', UWP='Assets/content_search_color.png' }"/>
+    <local:PretragaDatumIsteka Title="Datum isteka" IconImageSource="{OnPlatform iOS='date_search.png', Android='date_search.png', UWP='Assets/date_search_color.png' }"/>
+    <local:OcrPretraga Title="OCR" IconImageSource="{OnPlatform iOS='ocr_search.png', Android='ocr_search.png', UWP='Assets/ocr_search_color.png' }"/>
+   
+</TabbedPage>

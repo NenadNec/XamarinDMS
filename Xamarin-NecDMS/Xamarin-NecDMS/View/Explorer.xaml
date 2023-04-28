@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:NecDMS.TreeView"
+			 x:Class="NecDMS.View.Explorer"
+			 BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+	<controls:TreeView  x:Name="TheTreeView" Margin="4" SelectedItemChanged="TheTreeView_SelectedItemChanged"/>
+</ContentPage>

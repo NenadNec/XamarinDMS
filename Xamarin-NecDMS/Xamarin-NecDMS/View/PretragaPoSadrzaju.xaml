@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NecDMS.View.PretragaPoSadrzaju"
+             NavigationPage.HasBackButton="True"
+             BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+    <ContentPage.Content >
+        <StackLayout >
+			<Grid Margin="10,30,10,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="60"/>
+				</Grid.RowDefinitions>
+				<Entry 
+                    x:Name="Pojam"
+                    Placeholder="Unesite tekst za pretragu"
+                    Keyboard="Text"
+                    ReturnType="Next"
+                    PlaceholderColor="Gray"
+                    TextChanged="Pojam_TextChanged"
+					VerticalTextAlignment="Start"
+                    Background="{OnPlatform  iOS='Transparent'}"
+                    TextColor="{StaticResource BojaText}"/>
+                
+                <Image Source="delete.png"  x:Name="PojamIcn"  Margin="300,10,-10,10" HeightRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer                                                    
+                          Tapped="TapGestureRecognizer_Tapped"
+                          NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                
+            </Grid>
+            
+            <Grid>
+                <Button x:Name="PoSadrzajuPretrazi" Text="Pretraži" Margin="10,0,10,0" Clicked="PoSadrzajuPretrazi_Clicked"/>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

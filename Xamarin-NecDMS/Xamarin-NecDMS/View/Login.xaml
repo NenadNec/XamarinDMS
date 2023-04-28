@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:c="clr-namespace:NecDMS.Models" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             x:Class="NecDMS.View.Login"
+             BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png' }">
+   
+    <ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="toolbarItem1" Text="Podešavanja" Priority="0" Clicked="ToolbarItem_Clicked" />
+	</ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid VerticalOptions="CenterAndExpand" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                       
+
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" Source="{OnPlatform iOS='logo.png', Android='logo.png', UWP='Assets/logo.png' }" />
+
+                    <Entry 
+                        Grid.Row="2"
+                        x:Name="EntryUser"
+                        Placeholder="Korisničko ime"
+                        Keyboard="Text"
+                        ReturnType="Next"
+                        PlaceholderColor="Gray"
+                        Background="{OnPlatform  iOS='Transparent'}"
+                        TextColor="{StaticResource BojaText}"
+                        />
+                    <Entry 
+                        Grid.Row="3"
+                        x:Name="EntryPassword"
+                        Placeholder="Lozinka"
+                        Keyboard="Default"
+                        ReturnType="Next"
+                        PlaceholderColor="Gray"
+                        Background="{OnPlatform  iOS='Transparent'}"
+                        TextColor="{StaticResource BojaText}"
+                        IsPassword="True"/>
+
+                    <Button Text="Prijava" Grid.Row="5"  Clicked="Button_Login" />
+
+				</Grid>
+                <Label  Text="Nenad Nec" HorizontalTextAlignment="Center" VerticalTextAlignment="End"
+                        TextColor="{AppThemeBinding Light={StaticResource BojaTextLoginDark}, Dark={StaticResource BojaTextLoginDark}}" FontSize="15"/>
+			</StackLayout>
+        </ScrollView>
+		
+    </ContentPage.Content>
+	
+</ContentPage>
+    

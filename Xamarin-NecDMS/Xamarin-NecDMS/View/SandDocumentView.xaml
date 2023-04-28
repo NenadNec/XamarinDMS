@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:control="clr-namespace:Xamarin.Forms"
+			 x:Class="NecDMS.View.SandDocumentView" BackgroundImageSource="bg.png">
+<Grid>
+        <Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="3*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+		<!--ROW_0-->
+		<StackLayout  Grid.Row="0"  Grid.ColumnSpan="2" Margin="0,10,0,0">
+			<Frame BackgroundColor="#EBEFEF" CornerRadius="10">
+				<Grid>
+					<Label HorizontalOptions="Center">
+						<Label.FormattedText>
+							<FormattedString>
+								<Span x:Name="title" FontAttributes="Bold" TextColor="#1b4b76" FontSize="20" Text="SLANJE DOKUMENTA"/>
+							</FormattedString>
+						</Label.FormattedText>
+					</Label>
+				</Grid>
+			</Frame>
+		</StackLayout>
+
+		<!--ROW_1-->
+		<StackLayout  Grid.Row="1"  Grid.ColumnSpan="2" Margin="0,0,0,0">
+			<control:MultiSelectionPicker Margin="0,10,0,0" x:Name="pickerGrupe" Placeholder="Grupe" PlaceholderColor="Gray"  Background="{OnPlatform  iOS='Transparent'}" TextColor="{StaticResource BojaText}"/>
+			<control:MultiSelectionPicker Margin="0,10,0,0" x:Name="pickerKorisnici" Placeholder="Korisnici" PlaceholderColor="Gray" Background="{OnPlatform  iOS='Transparent'}" TextColor="{StaticResource BojaText}"/>
+			<Editor Margin="0,10,0,0" Placeholder="Naslov..." x:Name="naslov"  PlaceholderColor="#9c9282"  TextColor="{StaticResource BojaText}" />
+			<Editor Margin="0,10,0,0" x:Name="poruka" HeightRequest="100" Placeholder="Poruka..."  PlaceholderColor="#9c9282"  TextColor="{StaticResource BojaText}" />
+		</StackLayout>
+
+		<!--ROW_3-->
+		<ListView ItemsSource="{Binding .}" x:Name="listView" Grid.Row="2"  Grid.ColumnSpan="2" SelectionMode="None" >
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal">
+							<Label Text="{Binding Display_Naziv}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" TextColor="{StaticResource BojaText}" FontAttributes="Italic" />
+							<ImageButton Source="delete.png" WidthRequest="28" CommandParameter="{Binding IDN}" Clicked="DeleteClicked" BackgroundColor="Transparent" />
+
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+		<!--ROW_4-->
+		<StackLayout  Grid.Row="3"  Grid.ColumnSpan="2" Margin="0,10,0,0">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				
+				<Label Grid.Row="0" Grid.Column="0"  Text="Slanje mail-a sa fajlovima:"  TextColor="Gray"  VerticalOptions="CenterAndExpand" />
+				<CheckBox Grid.Row="0" Grid.Column="1" CheckedChanged="fileCheckBox_CheckedChanged" x:Name="fileCheckBox" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  IsChecked="False" Color="{StaticResource BojaText}" ScaleX="1.5" ScaleY="1.5"/>
+
+				<Label Grid.Row="1" Grid.Column="0"  Text="Slanje mail-a sa zipovanim fajlovima:"  TextColor="Gray"  VerticalOptions="CenterAndExpand"/>
+				<CheckBox Grid.Row="1" Grid.Column="1" CheckedChanged="zipCheckBox_CheckedChanged" x:Name="zipCheckBox" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  IsChecked="False" Color="{StaticResource BojaText}" ScaleX="1.5" ScaleY="1.5"/>
+			</Grid>
+		</StackLayout>
+		
+
+		<!--ROW_5--> 
+		<Button Grid.Row="4" Grid.Column="0"  WidthRequest="150"  Clicked="Potvrdi_Clicked" BackgroundColor="#A6B1F7" Text="Potvrdi" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="0,0,0,0"/>
+		
+	    <Button Grid.Row="4" Grid.Column="1"  WidthRequest="150"  Clicked="Odustani_Clicked" BackgroundColor="#FFB8BC" Text="Odustani" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="0,0,0,0"/>
+
+	</Grid>
+</ContentPage>

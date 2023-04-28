@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NecDMS.View.PretragaDokumentaView"
+			 xmlns:converters="clr-namespace:NecDMS.Helper"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             NavigationPage.HasNavigationBar="True"
+             BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+	<NavigationPage.TitleView>
+		<Label x:Name="title" FontSize="14" TextColor="White" />
+	</NavigationPage.TitleView>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:SubstringConverter x:Key="SubstringConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+        <StackLayout>
+			<CollectionView SelectionMode="Single"
+							x:Name="collection"
+							SelectionChanged="CollectionView_SelectionChanged"
+							VerticalScrollBarVisibility="Always">
+				<CollectionView.ItemTemplate> 
+					<DataTemplate>
+                        <SwipeView android:SwipeView.SwipeTransitionMode="Drag">
+                            <SwipeView.RightItems>
+                                <SwipeItems SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem
+										Text="Povezani"
+                                        IconImageSource="linked.png"
+										Invoked="ViewRelated"
+										BackgroundColor="#AED6F1"/>
+									<SwipeItem
+										Text="Pošalji"
+                                        IconImageSource="send.png"
+										Invoked="SendDocument"
+										BackgroundColor="#FFEA61"/>
+
+								</SwipeItems>
+                            </SwipeView.RightItems>
+
+							<SwipeView.LeftItems>
+								<SwipeItems SwipeBehaviorOnInvoked="Close"
+                                            Mode="Reveal">
+									<SwipeItem
+										Text="Overi"
+                                        IconImageSource="checked.png"
+										Invoked="VerifyDocument"
+										BackgroundColor="#95F985"/>
+								</SwipeItems>
+							</SwipeView.LeftItems>
+
+							<Frame BorderColor="LightGray" BackgroundColor="WhiteSmoke" CornerRadius="0" HasShadow="False">
+								<Grid>
+
+								<Grid.RowDefinitions>
+									
+									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="{OnPlatform iOS=0, Android=0, UWP=300}"/>
+
+                                 </Grid.ColumnDefinitions>
+
+									<Label Grid.Row="0" Grid.ColumnSpan="2">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Naziv: " FontAttributes="Italic" TextColor="#9c9282"/>
+											<Span Text="{Binding Naziv}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="1" Grid.Column="0" >
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Datum: " FontAttributes="Italic" TextColor="#9c9282"/>
+											<Span Text="{Binding Datum}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="2" Grid.Column="0" >
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Vrsta: " FontAttributes="Italic" TextColor="#9c9282"/>
+												<Span Text="{Binding Vrsta, Converter={StaticResource SubstringConverter}}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="3" Grid.Column="0" >
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Partner: " FontAttributes="Italic" TextColor="#9c9282"/>
+											<Span Text="{Binding Partner}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="4" Grid.Column="0" >
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Služba: " FontAttributes="Italic" TextColor="#9c9282"/>
+											<Span Text="{Binding Sluzba}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="1" Grid.Column="1">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Broj: " FontAttributes="Italic" TextColor="#9c9282"/>
+											<Span Text="{Binding Broj}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="2" Grid.Column="1">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Referent: " FontAttributes="Italic" TextColor="#9c9282"/>
+												<Span Text="{Binding Referent, Converter={StaticResource SubstringConverter}}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="3" Grid.Column="1">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Broj fajlova: " FontAttributes="Italic" TextColor="#9c9282"/>
+											<Span Text="{Binding BrojFajlova}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label Grid.Row="4" Grid.Column="1">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="Broj povezanih: " FontAttributes="Italic" TextColor="#9c9282"/>
+											<Span Text="{Binding BrojPovezanih}" TextColor="#1b4b76" FontAttributes="Bold" FontSize="16"/>
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+
+                                    <Button ImageSource="Assets/verified3.png" x:Name="Btnverify" Text="Overa"  Grid.Row="1" Grid.Column="2"  Clicked="Btnverify_Clicked" IsEnabled="{OnPlatform iOS='false', Android='false', UWP='true'}" IsVisible="{OnPlatform iOS='false', Android='false', UWP='true'}"/>
+                                    <Button ImageSource="Assets/sharing3.png" x:Name="BtnSend" Text="Posalji" Grid.Row="2" Grid.Column="2"  Clicked="BtnSend_Clicked" IsEnabled="{OnPlatform iOS='false', Android='false', UWP='true'}" IsVisible="{OnPlatform iOS='false', Android='false', UWP='true'}"/>
+                                    <Button ImageSource="Assets/link3.png" x:Name="BtnRelated" Text="Povezani"  Grid.Row="3" Grid.Column="2"  Clicked="BtnRelated_Clicked" IsEnabled="{OnPlatform iOS='false', Android='false', UWP='true'}" IsVisible="{OnPlatform iOS='false', Android='false', UWP='true'}"/>
+
+
+
+                                </Grid>
+						</Frame>
+                        </SwipeView>
+                    </DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

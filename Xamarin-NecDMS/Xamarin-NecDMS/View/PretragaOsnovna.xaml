@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:control="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             x:Class="NecDMS.View.PretragaOsnovna"
+             NavigationPage.HasBackButton="True"
+             BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}">
+    <ContentPage.Content>
+        <StackLayout Margin="{OnPlatform Android='0,-20,0,0', iOS='0,-20,0,40', UWP='0,-20,0,0' }" >
+			<Grid  Margin="10,30,10,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*" />
+
+				</Grid.RowDefinitions>
+                
+
+				<control:AutoSuggestBox 
+                    x:Name="Vrsta"
+                    Grid.Row="0"
+                    PlaceholderText="Vrsta"
+                    TextChanged="Vrsta_TextChanged"
+                    DisplayMemberPath="Naziv"
+                    TextMemberPath="Naziv"
+					SuggestionChosen="Vrsta_SuggestionChosen"
+                    PlaceholderTextColor="Gray"
+                    TextColor="{StaticResource BojaText}"
+					Focused="Vrsta_Focused"
+					/>
+
+
+               
+
+                <Image Source="delete.png"  x:Name="VrstaIcn" Grid.Row="0" Margin="300,20,-20,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer                                                    
+                          Tapped="TapGestureRecognizer_Tapped"
+                          NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Entry 
+                    Grid.Row="1"
+                    x:Name="Broj"
+                    Placeholder="Delovodni Broj"
+                    PlaceholderColor="Gray"
+                    TextColor="{StaticResource BojaText}"
+                    ReturnType="Next"
+					VerticalTextAlignment="Start"
+                    Background="{OnPlatform  iOS='Transparent'}"
+                    TextChanged="Broj_TextChanged"
+                    />
+
+                <Image Source="delete.png"  x:Name="BrojIcn" Grid.Row="1" Margin="300,20,-20,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer                                                    
+                          Tapped="TapGestureRecognizer_Tapped_1"
+                          NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+                <Entry 
+                    Grid.Row="2"
+                    x:Name="Naziv"
+                    Placeholder="Naziv"
+                    Keyboard="Text"
+                    ReturnType="Next"
+                    PlaceholderColor="Gray"
+                    TextColor="{StaticResource BojaText}"
+					VerticalTextAlignment="Start"
+                    Background="{OnPlatform  iOS='Transparent'}"
+                    TextChanged="Naziv_TextChanged"/>
+
+                <Image Source="delete.png"  x:Name="NazivIcn" Grid.Row="2" Margin="300,20,-20,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer                                                    
+                          Tapped="TapGestureRecognizer_Tapped_2"
+                          NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <control:AutoSuggestBox
+                    x:Name="Partner"
+                    Grid.Row="3"
+                    PlaceholderText="Partner"
+                    TextChanged="Partner_TextChanged"
+                    DisplayMemberPath="NAZIV"
+                    TextMemberPath="NAZIV"
+                    PlaceholderTextColor="{StaticResource BojaPlaceholder}"
+                    TextColor="{StaticResource BojaText}"
+                    SuggestionChosen="Partner_SuggestionChosen"
+					Focused="Partner_Focused"
+                    />
+
+                <Image Source="delete.png"  x:Name="PartnerIcn" Grid.Row="3" Margin="300,20,-20,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer                                                    
+                          Tapped="TapGestureRecognizer_Tapped_3"
+                          NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                
+                
+                <control:AutoSuggestBox
+                    x:Name="Odeljenje"
+                    Grid.Row="4"
+                    PlaceholderText="Naziv službe"
+                    TextChanged="Odeljenje_TextChanged"
+                    DisplayMemberPath="NazivSluzbe"
+                    TextMemberPath="NazivSluzbe"
+                    PlaceholderTextColor="{StaticResource BojaPlaceholder}"
+                    TextColor="{StaticResource BojaText}"
+                    SuggestionChosen="Odeljenje_SuggestionChosen"
+					Focused="Odeljenje_Focused"/>
+
+                <Image Source="delete.png"  x:Name="OdeljenjeIcn" Grid.Row="4" Margin="300,20,-20,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer                                                    
+                          Tapped="TapGestureRecognizer_Tapped_4"
+                          NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <control:AutoSuggestBox 
+                    x:Name="Referent"
+                    Grid.Row="5"
+                    PlaceholderText="Referent"
+                    TextChanged="Referent_TextChanged"
+                    DisplayMemberPath="ReferentNaziv"
+                    TextMemberPath="ReferentNaziv"
+                    PlaceholderTextColor="{StaticResource BojaPlaceholder}"
+                    TextColor="{StaticResource BojaText}"
+                    SuggestionChosen="Referent_SuggestionChosen_1"
+					Focused="Referent_Focused"
+                    />
+
+                <Image Source="delete.png"  x:Name="ReferentIcn" Grid.Row="5" Margin="300,20,-20,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer                                                    
+                          Tapped="TapGestureRecognizer_Tapped_5"
+                          NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+                <Label  Grid.Row="6" Text="Datum od:" TextColor="Gray" Padding="5,0,0,0"  FontSize="18"   Margin="{OnPlatform Android='0,-10,0,0 ', iOS='0,10,0,0 ', UWP='0,-10,0,0' }" />
+				<DatePicker
+					x:Name="startDatePicker"
+                    Grid.Row="6"
+                    FontSize="20"
+                    Background="{OnPlatform  iOS='Transparent'}" 
+                    Margin="{OnPlatform iOS='0,35,0,-20'}"
+				    TextColor="{StaticResource BojaText}"
+                    />
+
+                <Label  Grid.Row="7" Text="Datum do:" TextColor="Gray" Padding="5,0,0,0"  FontSize="18" Margin="{OnPlatform Android='0,-10,0,0', iOS='0,25,0,0', UWP='0,-10,0,0' }" />
+				<DatePicker
+					x:Name="endDatePicker"
+                    Grid.Row="7"
+                    Date="{x:Static system:DateTime.Today}"
+                    FontSize="20"
+                    TextColor="{StaticResource BojaText}"
+                     Margin="{OnPlatform iOS='0,50,0,-35'}"
+                    Background="{OnPlatform  iOS='Transparent' }"
+                    />
+
+				<StackLayout
+			    Grid.Row="8"
+                HorizontalOptions="Start"
+                Orientation="Horizontal">
+                    <Label  Text="Arhivirani dokumenti:" TextColor="Gray" Padding="5,0,10,0"  FontSize="18" Margin="{OnPlatform Android='0,0,0,0', iOS='0,30,0,0', UWP='0,0,0,0' }" />
+                    <CheckBox x:Name="arhivirano" IsChecked="False" Color="{StaticResource BojaText}" Margin="{OnPlatform Android='0,0,0,40', iOS='0,30,0,-30', UWP='0,0,0,40' }" ScaleX="1.5" ScaleY="1.5"/>
+				</StackLayout>
+			
+			</Grid>
+
+
+            <Button x:Name="OsnovaPretrazi" Text="Pretraži" Margin="{OnPlatform Android='20,0,20,15', iOS='20,25,20,-50', UWP='20,0,20,15' }" Clicked="OsnovaPretrazi_Clicked"/>
+			
+			
+			
+		</StackLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

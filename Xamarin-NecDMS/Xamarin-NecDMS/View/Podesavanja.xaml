@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NecDMS.View.Podesavanja"
+             BackgroundImageSource="{OnPlatform iOS='bg.png', Android='bg.png', UWP='Assets/bg.png'}"
+			 NavigationPage.HasBackButton="True"
+			 Title="Podešavanja">
+    <ContentPage.Content>
+        <ScrollView>
+
+			<TableView Intent="Settings">
+
+					<TableSection Title="Server URL" TextColor="DarkGray">
+					<TextCell x:Name="ServerApiUrl" Tapped="ServerApiUrlТapped" TextColor="{StaticResource BojaText}"/>
+					</TableSection>
+					<TableSection Title="Klijent URL" TextColor="DarkGray">
+					<TextCell x:Name="DocumentPreviewUrl" Tapped="DocumentPreviewUrlТapped" TextColor="{StaticResource BojaText}"/>
+					</TableSection>
+
+			</TableView>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
